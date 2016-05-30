@@ -1,5 +1,5 @@
-/*! isInviewport - v0.0.1 - 2015-01-07
-* Copyright (c) 2015 Daniel Sattler; Licensed  */
+/*! isInviewport - v0.0.1 - 2016-05-30
+* Copyright (c) 2016 Daniel Sattler; Licensed  */
 //Not using strict: uneven strict support in browsers, #392, and causes
 //problems with requirejs.exec()/transpiler plugins that may not be strict.
 /*jslint regexp: true, nomen: true, sloppy: true */
@@ -12743,25 +12743,25 @@ define('isInViewport',[
 			$(function() {
 					// get all items
 				$items = $(opts.selector);
+				updatePosition();
 			});
 
+				// on scroll
+			$(document).on('scroll', function() {
+				clearTimeout(timeout);
+				timeout = setTimeout(observeViewport, opts.timeout);
+			});
 
-				// on window load
+				// on resize
+			$(window).on('resize', function() {
+				clearTimeout(timeout);
+				timeout = setTimeout(updatePosition, opts.timeout);
+			});
+
+				// on window load update positions
+				// this is just called on first page load and not on history back
 			$(window).load(function() {
-
 				updatePosition();
-
-					// on scroll
-				$(document).on('scroll', function() {
-					clearTimeout(timeout);
-					timeout = setTimeout(observeViewport, opts.timeout);
-				});
-
-					// on resize
-				$(window).on('resize', function() {
-					clearTimeout(timeout);
-					timeout = setTimeout(updatePosition, opts.timeout);
-				});
 			});
 
 			return me;

@@ -47,25 +47,25 @@ define([
 			$(function() {
 					// get all items
 				$items = $(opts.selector);
+				updatePosition();
 			});
 
+				// on scroll
+			$(document).on('scroll', function() {
+				clearTimeout(timeout);
+				timeout = setTimeout(observeViewport, opts.timeout);
+			});
 
-				// on window load
+				// on resize
+			$(window).on('resize', function() {
+				clearTimeout(timeout);
+				timeout = setTimeout(updatePosition, opts.timeout);
+			});
+
+				// on window load update positions
+				// this is just called on first page load and not on history back
 			$(window).load(function() {
-
 				updatePosition();
-
-					// on scroll
-				$(document).on('scroll', function() {
-					clearTimeout(timeout);
-					timeout = setTimeout(observeViewport, opts.timeout);
-				});
-
-					// on resize
-				$(window).on('resize', function() {
-					clearTimeout(timeout);
-					timeout = setTimeout(updatePosition, opts.timeout);
-				});
 			});
 
 			return me;
