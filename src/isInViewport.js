@@ -8,8 +8,7 @@
 
 define([
 	"jquery"
-	, "underscore"
-], function($, _) {
+], function($) {
 
 	return (function(options) {
 
@@ -82,7 +81,7 @@ define([
 				currentScrollTop     = $(this).scrollTop() - opts.threshold
 				, viewportBottomLine = $(this).scrollTop() + windowHeight + opts.threshold;
 
-			_.each(itemCollection, function(item) {
+			$.each(itemCollection, function(key, item) {
 				if (item.bottomLine > currentScrollTop && item.offsetTop <= viewportBottomLine) {
 						// item is visible in viewport
 					item.isInViewport = true;
@@ -140,7 +139,14 @@ define([
 			 * @returns {*} collection
 			 */
 		me.getAllVisibleItemsInViewport = function() {
-			return _.where(itemCollection, {isInViewport : true});
+			var visibleItems = [];
+			$.each(itemCollection, function(key, item) {
+				if (item.isInViewport) {
+					visibleItems.push(item);
+				}
+			});
+			console.log(visibleItems);
+			return visibleItems;
 		};
 
 
