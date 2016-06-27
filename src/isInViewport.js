@@ -145,7 +145,6 @@ define([
 					visibleItems.push(item);
 				}
 			});
-			console.log(visibleItems);
 			return visibleItems;
 		};
 
