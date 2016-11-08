@@ -63,7 +63,7 @@ define([
 
 				// on window load update positions
 				// this is just called on first page load and not on history back
-			$(window).load(function() {
+			$(window).on('load', function() {
 				updatePosition();
 			});
 
