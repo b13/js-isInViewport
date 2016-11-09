@@ -1,4 +1,4 @@
-/*! isInviewport - v0.0.1 - 2016-06-27
+/*! isInviewport - v0.0.1 - 2016-11-08
 * Copyright (c) 2016 Daniel Sattler; Licensed  */
 //Not using strict: uneven strict support in browsers, #392, and causes
 //problems with requirejs.exec()/transpiler plugins that may not be strict.
@@ -12228,7 +12228,7 @@ define('isInViewport',[
 
 				// on window load update positions
 				// this is just called on first page load and not on history back
-			$(window).load(function() {
+			$(window).on('load', function() {
 				updatePosition();
 			});
 
