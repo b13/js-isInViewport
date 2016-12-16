@@ -157,6 +157,17 @@ define([
 		};
 
 
+			/**
+			 * search new items
+			 */
+		me.searchNewItems = function() {
+			var $newItems = $(opts.selector).not($items);
+			if ($newItems.length > 0) {
+				$items = $(opts.selector);
+				updatePosition();
+			}
+		};
+
 		return initialize();
 	});
 });

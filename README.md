@@ -8,7 +8,7 @@ AMD Module to observe items (DOM Elements) the current viewport
 
 ```js
 	
-	var viewport = new isInViewportPlugin({
+	var _viewport = new isInViewportPlugin({
 	
 			// jQuery selector 
 		selector    : '.bJS_isInViewport'
@@ -28,4 +28,10 @@ AMD Module to observe items (DOM Elements) the current viewport
 			console.log(obj.getAllVisibleItemsInViewport());
 		}
 	});
+```
+
+# Update: search new appended items
+
+```js
+    _viewport.searchNewItems();
 ```
