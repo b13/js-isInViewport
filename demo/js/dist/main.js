@@ -1,4 +1,4 @@
-/*! isInviewport - v0.0.1 - 2016-11-08
+/*! isInviewport - v0.0.1 - 2016-12-16
 * Copyright (c) 2016 Daniel Sattler; Licensed  */
 //Not using strict: uneven strict support in browsers, #392, and causes
 //problems with requirejs.exec()/transpiler plugins that may not be strict.
@@ -12321,6 +12321,17 @@ define('isInViewport',[
 			updatePosition();
 		};
 
+
+			/**
+			 * search new items
+			 */
+		me.searchNewItems = function() {
+			var $newItems = $(opts.selector).not($items);
+			if ($newItems.length > 0) {
+				$items = $(opts.selector);
+				updatePosition();
+			}
+		};
 
 		return initialize();
 	});
