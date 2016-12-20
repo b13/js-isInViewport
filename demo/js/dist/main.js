@@ -1,4 +1,4 @@
-/*! isInviewport - v0.0.1 - 2016-12-16
+/*! isInviewport - v0.0.1 - 2016-12-20
 * Copyright (c) 2016 Daniel Sattler; Licensed  */
 //Not using strict: uneven strict support in browsers, #392, and causes
 //problems with requirejs.exec()/transpiler plugins that may not be strict.
@@ -12271,6 +12271,10 @@ define('isInViewport',[
 		function updatePosition() {
 			windowHeight   = $(window).height();
 			itemCollection = [];
+
+			// for some reason (sometimes) IE11 calls window.onload before jquery ready
+            // $items are added on document/jquery ready
+			if ($items.length > 0) { return false; }
 
 			$items.each(function() {
 				var
