@@ -107,6 +107,10 @@ define([
 			windowHeight   = $(window).height();
 			itemCollection = [];
 
+			// for some reason (sometimes) IE11 calls window.onload before jquery ready
+            // $items are added on document/jquery ready
+			if ($items.length > 0) { return false; }
+
 			$items.each(function() {
 				var
 					offsetTop = parseInt($(this).offset().top, 10)
