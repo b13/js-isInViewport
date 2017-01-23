@@ -1,5 +1,5 @@
-/*! isInviewport - v0.0.1 - 2016-12-20
-* Copyright (c) 2016 Daniel Sattler; Licensed  */
+/*! isInviewport - v0.0.1 - 2017-01-23
+* Copyright (c) 2017 Daniel Sattler; Licensed  */
 //Not using strict: uneven strict support in browsers, #392, and causes
 //problems with requirejs.exec()/transpiler plugins that may not be strict.
 /*jslint regexp: true, nomen: true, sloppy: true */
@@ -12276,7 +12276,7 @@ define('isInViewport',[
             // $items are added on document/jquery ready
 			if ($items.length == 0) { return false; }
 
-			$items.each(function() {
+			$.each($items, function() {
 				var
 					offsetTop = parseInt($(this).offset().top, 10)
 					, height  = parseInt($(this).height(), 10);
@@ -12332,7 +12332,7 @@ define('isInViewport',[
 		me.searchNewItems = function() {
 			var $newItems = $(opts.selector).not($items);
 			if ($newItems.length > 0) {
-				$items = $(opts.selector);
+				$items = $items.add($newItems);
 				updatePosition();
 			}
 		};

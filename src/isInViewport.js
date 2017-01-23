@@ -111,7 +111,7 @@ define([
             // $items are added on document/jquery ready
 			if ($items.length == 0) { return false; }
 
-			$items.each(function() {
+			$.each($items, function() {
 				var
 					offsetTop = parseInt($(this).offset().top, 10)
 					, height  = parseInt($(this).height(), 10);
@@ -167,7 +167,7 @@ define([
 		me.searchNewItems = function() {
 			var $newItems = $(opts.selector).not($items);
 			if ($newItems.length > 0) {
-				$items = $(opts.selector);
+				$items = $items.add($newItems);
 				updatePosition();
 			}
 		};
